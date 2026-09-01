@@ -97,32 +97,13 @@
   }
 }
 
-// Newsreader (headings) and JetBrains Mono (code), self-hosted for the same
-// reason as Inter above: no render-blocking fonts.googleapis.com CSS chain.
-// Ranges/subsets/URLs mirror what Google's own css2 endpoint serves for
-// family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400 and
-// family=JetBrains+Mono:wght@400..500 — Newsreader ships no cyrillic/greek
-// subsets at this axis range, unlike Inter.
-//
-// The Newsreader files Google serves carry the full wght 200..800 range and an
-// opsz 6..72 axis, which cost 195 KB for the two latin faces alone. The site
-// never varies optical size and only uses wght 500/600, so every
-// newsreader-*.woff2 here was re-instanced from Google's original with
-// fonttools (4.63) before being committed:
-//
-//   from fontTools.ttLib import TTFont
-//   from fontTools.varLib import instancer
-//   f = TTFont('newsreader-<subset>.woff2')
-//   f = instancer.instantiateVariableFont(
-//           f, {'opsz': 32.0, 'wght': (400, 600)}, optimize=True)  # roman
-//   f = instancer.instantiateVariableFont(
-//           f, {'opsz': 32.0}, optimize=True)                      # italic
-//   f.flavor = 'woff2'; f.save('newsreader-<subset>.woff2')
-//
-// opsz is pinned at 32 — between the 20-24 px card/CV headings and the 40-64 px
-// hero — and the italics ship wght pinned at 400 already, so they only lose
-// opsz. Result: latin roman 128 KB -> 39 KB, latin italic 62 KB -> 24 KB.
-// The declared `font-weight: 400 600` below still matches the instanced range.
+// Space Grotesk (headings) and JetBrains Mono (code), self-hosted for the
+// same reason as Inter above: no render-blocking fonts.googleapis.com CSS
+// chain. Ranges/subsets/URLs mirror what Google's own css2 endpoint serves
+// for family=Space+Grotesk:wght@500..700 and family=JetBrains+Mono:wght@400..500
+// — Space Grotesk ships no cyrillic/greek subsets at this axis range, unlike
+// Inter. It's already served as a single variable file per subset spanning
+// the whole 500-700 range the site uses, so no re-instancing was needed.
 //
 // JetBrains Mono is deliberately kept as-is, including on the home page, where
 // its only use is the globe card's coordinate readout and the timeline meta
@@ -190,20 +171,11 @@
     )
 {
   @font-face {
-    font-family: Newsreader;
+    font-family: "Space Grotesk";
     font-style: normal;
-    font-weight: 400 600;
+    font-weight: 500 700;
     font-display: swap;
-    src: url("/assets/fonts/newsreader-#{$subset}.woff2") format("woff2");
-    unicode-range: $range;
-  }
-
-  @font-face {
-    font-family: Newsreader;
-    font-style: italic;
-    font-weight: 400;
-    font-display: swap;
-    src: url("/assets/fonts/newsreader-italic-#{$subset}.woff2") format("woff2");
+    src: url("/assets/fonts/spacegrotesk-#{$subset}.woff2") format("woff2");
     unicode-range: $range;
   }
 }
@@ -313,7 +285,8 @@ $font-family-sans-serif:
   "Segoe UI",
   Roboto,
   sans-serif !default;
-$font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif !default;
+$font-family-serif: "Space Grotesk", Georgia, Cambria, "Times New Roman", Times,
+  serif !default;
 $primary: #126ef5 !default;
 $link-color: #126ef5 !default;
 

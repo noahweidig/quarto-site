@@ -47,7 +47,7 @@ This is a working tool, deliberately out of the sitemap and the navbar.
 
 <section class="sg-section" id="sg-type">
 <h2>Type scale</h2>
-<p class="sg-note">Newsreader carries display sizes, Inter carries UI and body,
+<p class="sg-note">Space Grotesk carries display sizes, Inter carries UI and body,
 JetBrains Mono carries code and meta. Each step below is set at its token's
 live value.</p>
 <div class="sg-grid" id="sg-type-grid"></div>

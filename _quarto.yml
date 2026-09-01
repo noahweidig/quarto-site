@@ -299,8 +299,7 @@ format:
           </script>
           <link rel="alternate" type="application/rss+xml" title="Noah Weidig — Blog" href="/blog/index.xml">
           <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-          <link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
-          <link rel="preload" href="/assets/fonts/newsreader-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+          <link rel="preload" href="/assets/fonts/spacegrotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
           <link rel="icon" href="/favicon.ico" sizes="32x32">
           <link rel="icon" type="image/svg+xml" href="/favicon.svg">
           <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
